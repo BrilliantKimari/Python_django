@@ -47,9 +47,9 @@ Wildlife Kenya is an educational platform dedicated to fostering appreciation fo
 ## Developers
 
 👥 **Development Team:**
-- **Emmaculate Achieng**
-- **Saline Akinyi**
-- **Brilliant Kimari** 
+- **SCT212-0092/2025 Emmaculate Achieng**
+- **SCT212-0099/2025 Saline Akinyi**
+- **SCT212-0086/2025 Brilliant Kimari** 
 ---
 
 **Made with ❤️ for Wildlife Conservation**
