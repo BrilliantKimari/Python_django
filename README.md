@@ -2,6 +2,8 @@
 
 A beautiful Django web application for exploring Kenya's incredible wildlife and learning about wildlife conservation.
 
+![Wildlife Kenya Homepage](docs/picture.png)
+
 ## About
 
 Wildlife Kenya is an educational platform dedicated to fostering appreciation for Kenya's unique biodiversity. The website provides information about iconic African animals and promotes conservation awareness.
