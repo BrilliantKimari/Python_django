@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wildlife Kenya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        nav {
+            background-color: #4CAF50;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        nav a, nav form {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #45a049;
+        }
+        nav form {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #45a049;
+        }
+        .user-info {
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/animals/">Animals</a>
+        <a href="/about/">About</a>
+        {% if user.is_authenticated %}
+            <span class="user-info">Welcome, {{ user.first_name|default:user.email }}</span>
+            <form method="post" action="/logout/" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="/auth/">Login/Register</a>
+        {% endif %}
+    </nav>
+
+    <h1>Welcome to Wildlife Kenya 🦁</h1>
+    {% if user.is_authenticated %}
+        <p>Hello {{ user.first_name|default:user.email }}, explore amazing animals and nature.</p>
+    {% else %}
+        <p>Explore amazing animals and nature. <a href="/auth/">Login or register</a> to get started.</p>
+    {% endif %}
+</body>
+</html>
