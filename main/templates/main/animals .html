@@ -2,14 +2,174 @@
 <html>
 <head>
     <title>Animals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f9f4;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #2e7d32, #4CAF50);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        nav form {
+            display: inline;
+        }
+
+        nav button {
+            background: #1b5e20;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        nav button:hover {
+            background: #145a18;
+        }
+
+        .user-info {
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .animal-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .animal-card h2 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .animal-card p {
+            color: #666;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .developers {
+            margin-top: 40px;
+            padding: 20px;
+            background: #e8f5e9;
+            text-align: center;
+            border-top: 2px solid #4CAF50;
+        }
+
+        .developers h3 {
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Wild Animals 🐘</h1>
-    <ul>
-        <li>Lion 🦁</li>
-        <li>Elephant 🐘</li>
-        <li>Zebra 🦓</li>
-        <li>Giraffe 🦒</li>
-    </ul>
+    <nav>
+        <div>
+            <a href="/">Home</a>
+            <a href="/animals/">Animals</a>
+            <a href="/about/">About</a>
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span class="user-info">Welcome, {{ user.first_name|default:user.email }}</span>
+                <form method="post" action="/logout/" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="/auth/">Login/Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Wild Animals of Kenya 🐘</h1>
+
+        <div class="animals-grid">
+            <div class="animal-card">
+                <h2>🦁 Lion</h2>
+                <p>The king of the jungle, lions are apex predators known for their strength, courage, and social behavior. They live in prides and are found across Kenya's protected reserves.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🐘 Elephant</h2>
+                <p>The largest land animals, elephants are highly intelligent and known for their memory. They play a vital role in shaping their habitats and are symbols of Kenya's wildlife.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🦓 Zebra</h2>
+                <p>With their distinctive black and white stripes, zebras are herbivores that travel in large herds. Each zebra has a unique stripe pattern, like a fingerprint.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🦒 Giraffe</h2>
+                <p>The tallest land animals, giraffes are iconic symbols of African wildlife. Their long necks allow them to reach vegetation other animals cannot, making them perfectly adapted to their environment.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="developers">
+        <h3>Developed By</h3>
+        <p>Emmaculate Achieng • Saline Akinyi • Brilliant Kimari</p>
+    </div>
+
 </body>
 </html>

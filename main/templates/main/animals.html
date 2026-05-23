@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Wildlife Kenya</title>
+    <title>Animals</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,25 +57,51 @@
             font-weight: bold;
         }
 
-        .hero {
-            background: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d') center/cover no-repeat;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 1px 1px 4px black;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
         .content {
-            padding: 20px;
-            text-align: center;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         h1 {
             color: #2e7d32;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .animal-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .animal-card h2 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .animal-card p {
+            color: #666;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .developers {
@@ -94,7 +120,6 @@
 </head>
 
 <body>
-
     <nav>
         <div>
             <a href="/">Home</a>
@@ -115,18 +140,30 @@
         </div>
     </nav>
 
-    <div class="hero">
-        Discover Wildlife Kenya 🦁🌿
-    </div>
-
     <div class="content">
-        <h1>Welcome to Wildlife Kenya 🦁</h1>
+        <h1>Wild Animals of Kenya 🐘</h1>
 
-        {% if user.is_authenticated %}
-            <p>Hello {{ user.first_name|default:user.email }}, explore amazing animals and nature.</p>
-        {% else %}
-            <p>Explore amazing animals and nature. <a href="/auth/">Login or register</a> to get started.</p>
-        {% endif %}
+        <div class="animals-grid">
+            <div class="animal-card">
+                <h2>🦁 Lion</h2>
+                <p>The king of the jungle, lions are apex predators known for their strength, courage, and social behavior. They live in prides and are found across Kenya's protected reserves.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🐘 Elephant</h2>
+                <p>The largest land animals, elephants are highly intelligent and known for their memory. They play a vital role in shaping their habitats and are symbols of Kenya's wildlife.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🦓 Zebra</h2>
+                <p>With their distinctive black and white stripes, zebras are herbivores that travel in large herds. Each zebra has a unique stripe pattern, like a fingerprint.</p>
+            </div>
+
+            <div class="animal-card">
+                <h2>🦒 Giraffe</h2>
+                <p>The tallest land animals, giraffes are iconic symbols of African wildlife. Their long necks allow them to reach vegetation other animals cannot, making them perfectly adapted to their environment.</p>
+            </div>
+        </div>
     </div>
 
     <div class="developers">

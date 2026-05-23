@@ -2,9 +2,141 @@
 <html>
 <head>
     <title>About Wildlife</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f9f4;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #2e7d32, #4CAF50);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        nav form {
+            display: inline;
+        }
+
+        nav button {
+            background: #1b5e20;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        nav button:hover {
+            background: #145a18;
+        }
+
+        .user-info {
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .mission {
+            background: #e8f5e9;
+            padding: 20px;
+            border-left: 4px solid #4CAF50;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .developers {
+            margin-top: 40px;
+            padding: 20px;
+            background: #e8f5e9;
+            text-align: center;
+            border-top: 2px solid #4CAF50;
+        }
+
+        .developers h3 {
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>About Wildlife Kenya</h1>
-    <p>We help people learn about animals and conservation.</p>
+    <nav>
+        <div>
+            <a href="/">Home</a>
+            <a href="/animals/">Animals</a>
+            <a href="/about/">About</a>
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span class="user-info">Welcome, {{ user.first_name|default:user.email }}</span>
+                <form method="post" action="/logout/" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="/auth/">Login/Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>About Wildlife Kenya 🌍</h1>
+        
+        <p>Welcome to Wildlife Kenya, your gateway to understanding the incredible biodiversity of Kenya's natural habitats. Our mission is to educate and inspire people about the importance of wildlife conservation and the beauty of nature.</p>
+        
+        <div class="mission">
+            <h2 style="color: #2e7d32; margin-top: 0;">Our Mission</h2>
+            <p>We are dedicated to fostering a deep appreciation for Kenya's unique wildlife and ecosystems. Through education, awareness, and conservation efforts, we aim to protect the natural heritage of our nation for future generations.</p>
+        </div>
+
+        <h2 style="color: #2e7d32;">Why Wildlife Matters</h2>
+        <p>Kenya is home to some of the world's most iconic wildlife. From the majestic lions of the Serengeti to the gentle elephants of Amboseli, our animals play a crucial role in maintaining ecological balance. By learning about these creatures, we take the first step towards meaningful conservation.</p>
+    </div>
+
+    <div class="developers">
+        <h3>Developed By</h3>
+        <p>Emmaculate Achieng • Saline Akinyi • Brilliant Kimari</p>
+    </div>
+
 </body>
 </html>
